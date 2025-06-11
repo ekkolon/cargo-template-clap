@@ -1,6 +1,5 @@
 [package]
-name = "{{ bin_crate_name }}"
-build = "build.rs"
+name = "{{ crate_name }}"
 
 rust-version.workspace = true
 edition.workspace = true
@@ -11,17 +10,15 @@ authors.workspace = true
 categories.workspace = true
 
 
-[[bin]]
-name = "{{ lib_name }}"
-path = "./src/main.rs"
-
+[lib]
+name = "{{ crate_command_name }}"
+path = "./src/lib.rs"
 
 [dependencies]
 clap = { workspace = true, features = ["derive", "wrap_help", "string", "env"] }
-serde = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
-
-{{ lib_name }} = { path = "../{{ lib_crate_name }}" }
+thiserror = { workspace = true }
 
 
 [dev-dependencies]
@@ -29,7 +26,4 @@ assert_cmd = "2"
 predicates = "3"
 
 [build-dependencies]
-{{ lib_name }} = { path = "../{{ lib_crate_name }}" }
-clap = { workspace = true }
-clap_mangen = { version = "0.2.27" }
 clap_complete = { version = "4.5" }

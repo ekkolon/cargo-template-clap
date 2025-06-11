@@ -1,0 +1,10 @@
+[package]
+name = "cargo-template-clap"
+version = "0.1.0"
+rust-version = "1.85"
+edition = "2024"
+authors = ["Nelson Dominguez <ekkolon@proton.me>"]
+description = ""
+
+[dev-dependencies]
+cargo-generate = "0.23.3"

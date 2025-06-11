@@ -1,4 +1,4 @@
-use {{ lib_name }}::run;
+use {{ crate_command_name | snake_case }}::run;
 
 fn main() {
     if let Err(e) = run() {
