@@ -1,2 +1,4 @@
 [template]
 sub_templates = ["clap-derive"]
+ignore = ["!clap-derive"]
+exclude = ["!clap-derive"]
