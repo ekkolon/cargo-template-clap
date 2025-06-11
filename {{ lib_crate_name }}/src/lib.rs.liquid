@@ -1,0 +1,13 @@
+mod cli;
+mod commands;
+mod config;
+mod error;
+
+pub use crate::cli::Cli;
+use clap::Parser;
+pub use error::{Error, Result};
+
+pub fn run() -> Result<()> {
+    let cli = Cli::parse();
+    cli.run()
+}

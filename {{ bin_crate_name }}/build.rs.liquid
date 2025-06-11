@@ -1,0 +1,79 @@
+use std::{
+    fs::File,
+    io::Write,
+    path::{Path, PathBuf},
+    str::FromStr,
+};
+
+use clap::{Command, CommandFactory};
+use {{ lib_name }}::Cli;
+
+// type IoResult<T> = Result<T, std::io::Error>;
+type BuildResult<T> = Result<T, Box<dyn std::error::Error>>;
+
+const MANPAGE_OUTPATH: &str = "man";
+const COMLETIONS_OUTPATH: &str = "completions";
+
+fn main() -> BuildResult<()> {
+    let cmd = Cli::command();
+    let bin_name = cmd.get_name();
+
+    let mut cmd = cmd.clone();
+    cmd.build();
+
+    // Generate man
+    generate_manpage(&mut cmd, bin_name, MANPAGE_OUTPATH)?;
+
+    // Generate completions
+    generate_completions(&mut cmd, bin_name, COMLETIONS_OUTPATH)?;
+
+    Ok(())
+}
+
+fn generate_manpage<P>(cmd: &Command, bin_name: impl AsRef<str>, outbase: P) -> BuildResult<()>
+where
+    P: AsRef<Path>,
+{
+    use clap_mangen::Man;
+    let outdir = crate_dir(outbase)?;
+
+    let mut outpath = outdir.join(bin_name.as_ref());
+    outpath.set_extension("1");
+
+    let man = Man::new(cmd.clone());
+    let mut buffer: Vec<u8> = Default::default();
+    man.render(&mut buffer).unwrap();
+
+    let mut file = File::create(outpath)?;
+    file.write_all(&buffer).unwrap();
+
+    Ok(())
+}
+
+fn generate_completions<P>(
+    cmd: &mut Command,
+    bin_name: impl AsRef<str>,
+    outdir: P,
+) -> BuildResult<()>
+where
+    P: AsRef<Path>,
+{
+    use clap_complete::generate_to;
+    use clap_complete::shells::{Bash, Fish, Zsh};
+
+    let outpath = crate_dir(outdir)?;
+    let bin_name = bin_name.as_ref();
+
+    generate_to(Bash, cmd, bin_name, &outpath)?;
+    generate_to(Fish, cmd, bin_name, &outpath)?;
+    generate_to(Zsh, cmd, bin_name, &outpath)?;
+
+    Ok(())
+}
+
+fn crate_dir<P: AsRef<Path>>(path: P) -> BuildResult<PathBuf> {
+    let rootdir = std::env::var("CARGO_MANIFEST_DIR")?;
+    let basedir = PathBuf::from_str(&rootdir)?;
+    let outpath = basedir.join(path);
+    Ok(outpath)
+}
