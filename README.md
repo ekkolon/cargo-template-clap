@@ -51,12 +51,12 @@ cargo generate --name mytool ekkolon/cargo-template-clap clap-derive
 - 🧭 [clig.dev](https://clig.dev/) – Command-Line Interface Guidelines
 - 🛠️ [cargo-generate](https://cargo-generate.github.io/cargo-generate/) – Template generator for Rust projects
 
-## 🤝 Contributing
-
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
-
 ## 📄 License
 
 This project is dual-licensed under MIT or Apache-2.0, at your choice.
 
 > © 2025 Nelson Dominguez
+
+## 🤝 Contributing
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
