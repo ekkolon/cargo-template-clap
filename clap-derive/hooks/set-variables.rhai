@@ -27,6 +27,18 @@ if !variable::is_set("display_name") {
     variable::set("display_name", display_name);
 }
 
+if !variable::is_set("repository") {
+    let input = variable::prompt("🔗 GitHub repository (username/repo or full URL)", "");
+
+    let normalized = if input.starts_with("https://") {
+        input
+    } else {
+        "https://github.com/" + input
+    };
+
+    variable::set("repository", normalized);
+}
+
 // 📅 License year (e.g. 2025)
 if !variable::is_set("license_year") {
     let year = system::date().year.to_string();

@@ -1,21 +1,28 @@
-# 🧪 cargo-template-clap — Production-Ready CLI Templates in Rust 🦀
+# 🦀 Templates for Rust CLIs with clap
 
-A curated set of high-quality, modern Rust templates for building CLI tools — ready for **[`cargo-generate`](https://github.com/cargo-generate/cargo-generate)**.
+A set of ready-to-use templates for building modern CLI tools in Rust using [`clap`](https://docs.rs/clap/latest/clap).
+
+Designed to work out of the box with [`cargo-generate`](https://github.com/cargo-generate/cargo-generate).
 
 ## 📦 Available Templates
 
-**[`clap-derive`](./clap-derive/)**
+- ### [`clap-derive`](./clap-derive/)
 
-A complete CLI app scaffold using clap derive feature.
+    Cargo workspace scaffold using clap `derive` feature.
 
-### ✨ Features
+  #### ✨ Features
 
-- 🧠 **Serde Support**: JSON/YAML config parsing for easy customization.
-- 📜 **Man Page**: Auto-generated man page for system-wide usage.
-- 💻 **Shell Completions**: Generate completions for Bash, Zsh, Fish.
-- 🧪 **Tested**: Built-in unit and integration tests.
-- 💡 **Helpful Errors**: Rich error messages via [`thiserror`](https://docs.rs/thiserror).
-- 🛠 **CI Ready**: GitHub Actions with build + test workflows.
+  🧠 **Serde Support**: JSON config parsing for easy customization.
+  
+  📜 **Man Page**: Auto-generated man page for system-wide usage.
+  
+  💻 **Shell Completions**: Generate completions for Bash, Zsh, Fish.
+  
+  🧪 **Tested**: Built-in unit and integration tests.
+  
+  💡 **Helpful Errors**: Rich error messages via [`thiserror`](https://docs.rs/thiserror).
+  
+  🛠 **CI Ready**: GitHub Actions with test workflows.
 
 ## 🚀 Getting Started
 
@@ -25,24 +32,31 @@ Install [cargo-generate](https://github.com/cargo-generate/cargo-generate) if yo
 cargo install cargo-generate
 ```
 
-### Generate Clap CLI project
+### Generate CLI project
 
 ```bash
 cargo generate ekkolon/cargo-template-clap clap-derive
 ```
 
-### Generate Clap CLI project with name
+#### or
 
 ```bash
-cargo generate --name ripgrep ekkolon/cargo-template-clap clap-derive
+cargo generate --name mytool ekkolon/cargo-template-clap clap-derive
 ```
-
-## 📄 License
-
-Licensed under the MIT or Apache-2.0 license, at your option.
 
 ## 🔗 Related Links
 
-- [Clap Documentation](https://docs.rs/clap)
-- [Serde](https://serde.rs)
-- [clig.dev – Command Line Interface Guidelines](https://clig.dev/)
+- 📚 [Clap](https://docs.rs/clap) - Documentation
+- 🧑‍💻 [Serde](https://serde.rs) – Serialization Framework
+- 🧭 [clig.dev](https://clig.dev/) – Command-Line Interface Guidelines
+- 🛠️ [cargo-generate]((https://cargo-generate.github.io/cargo-generate/)) – Template generator for Rust projects
+
+## 🤝 Contributing
+
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in this work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+
+## 📄 License
+
+This project is dual-licensed under MIT or Apache-2.0, at your choice.
+
+> © 2025 Nelson Dominguez

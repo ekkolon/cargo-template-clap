@@ -34,6 +34,7 @@ fn should_generate_clap_derive_template() {
         "library_name=example-project".to_string(),
         "command=ep".to_string(),
         "display_name=Example Project".to_string(),
+        "repository=itsame/example-project".to_string(),
         format!("license_year={}", 2025), // Use actual current year
         "license_holder=Jane Doe".to_string(), // Example author
     ];
