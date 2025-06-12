@@ -49,7 +49,7 @@ cargo generate --name mytool ekkolon/cargo-template-clap clap-derive
 - 📚 [Clap](https://docs.rs/clap) - Documentation
 - 🧑‍💻 [Serde](https://serde.rs) – Serialization Framework
 - 🧭 [clig.dev](https://clig.dev/) – Command-Line Interface Guidelines
-- 🛠️ [cargo-generate]((https://cargo-generate.github.io/cargo-generate/)) – Template generator for Rust projects
+- 🛠️ [cargo-generate](https://cargo-generate.github.io/cargo-generate/) – Template generator for Rust projects
 
 ## 🤝 Contributing
 
