@@ -6,7 +6,7 @@ use std::{
 };
 
 use clap::{Command, CommandFactory};
-use {{ crate_command_name | snake_case }}::Cli;
+use {{ library_name | snake_case }}::Cli;
 
 // type IoResult<T> = Result<T, std::io::Error>;
 type BuildResult<T> = Result<T, Box<dyn std::error::Error>>;

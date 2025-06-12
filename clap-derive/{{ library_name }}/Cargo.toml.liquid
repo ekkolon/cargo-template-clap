@@ -1,5 +1,5 @@
 [package]
-name = "{{ crate_name }}"
+name = "{{ library_name }}"
 
 rust-version.workspace = true
 edition.workspace = true
@@ -11,7 +11,7 @@ categories.workspace = true
 
 
 [lib]
-name = "{{ crate_command_name }}"
+name = "{{ library_name | snake_case }}"
 path = "./src/lib.rs"
 
 [dependencies]

@@ -1,49 +1,49 @@
-# 🚀 {{ crate_display_name }} — Your Next Favorite CLI Tool 🦀
+# {{ display_name }}
 
-![CI](https://img.shields.io/github/actions/workflow/status/your-org/{{project-name}}/ci.yml?branch=main)
-![Crates.io](https://img.shields.io/crates/v/{{project-name}})
-![License](https://img.shields.io/crates/l/{{project-name}})
-![Rust Version](https://img.shields.io/badge/rust-2021%2B-orange)
-
-> ⚡️ A modern, fast, and reliable CLI tool powered by Rust, built with ❤️ for productivity.
+⚡️ This CLI project was scaffolded using [**cargo-template-clap**](https://github.com/ekkolon/cargo-template-clap) via [`cargo-generate`](https://cargo-generate.github.io/cargo-generate/).
 
 ---
 
 ## ✨ Features
 
-- 🧩 **Clap-powered**: Intuitive CLI interface using [`clap`](https://docs.rs/clap) with completions & help.
-- 🧠 **Serde Support**: JSON/YAML config parsing for easy customization.
-- 📜 **Man Page**: Auto-generated man page for system-wide usage.
-- 💻 **Shell Completions**: Generate completions for Bash, Zsh, Fish.
-- 🧪 **Tested**: Built-in unit and integration tests.
-- 💡 **Helpful Errors**: Rich error messages via [`thiserror`](https://docs.rs/thiserror).
-- 🛠 **CI Ready**: GitHub Actions with build + test workflows.
-- 📦 **Cargo Workspace Compatible**: Easily integrates into mono-repos or libraries.
+Your project is ready to grow! Here's what you can build on:
+
+- 🔧 A structured CLI interface powered by `clap`
+- 🧪 Built-in support for testing with `assert_cmd`
+- ⚙️ Preconfigured build scripts for shell completions and man pages
+- 📦 Split workspace for library + CLI binary
+- 🔌 Easily extendable with `serde`, `thiserror`, and more
+
+> Add your custom features here to showcase what makes your CLI shine!
 
 ---
 
 ## 📦 Installation
 
-### 🛠 From source (recommended for devs)
+Choose the method that works best for your use case:
+
+### 🛠 From source
 
 ```bash
 cargo install --path .
+
 ```
 
 ### 📦 From crates.io
 
 ```bash
-cargo install {{ crate_command_name }}
+cargo install {{ command }}
 ```
 
 ## 📄 License
 
-Licensed under the MIT or Apache-2.0 license, at your option.
+This project is dual-licensed under MIT or Apache-2.0, at your choice.
 
-> © {{ crate_license_year }} Your Name or Org
+> © {{ license_year }} {{ license_holder }}
 
 ## 🔗 Related Links
 
-- [Clap Documentation](https://docs.rs/clap)
-- [Serde](https://serde.rs)
-- [clig.dev – Command Line Interface Guidelines](https://clig.dev/)
+- 📚 [Clap](https://docs.rs/clap) - Documentation
+- 🧑‍💻 [Serde](https://serde.rs) – Serialization Framework
+- 🧭 [clig.dev](https://clig.dev/) – Command-Line Interface Guidelines
+- 🛠️ [cargo-generate]((https://cargo-generate.github.io/cargo-generate/)) – Template generator for Rust projects

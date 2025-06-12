@@ -1,83 +1,42 @@
-// Get the base project name (required)
 let project_name = variable::get("project-name");
 
-// --- LIBRARY FALLBACKS ---
-let lib_name = if variable::is_set("lib_name") && variable::get("lib_name") != "" {
-    variable::get("lib_name")
-} else {
-    variable::set("lib_name", project_name);
-    project_name
-};
-
-let lib_crate_name = if variable::is_set("lib_crate_name") && variable::get("lib_crate_name") != "" {
-    variable::get("lib_crate_name")
-} else {
-    variable::set("lib_crate_name", lib_name);
-    lib_name
-};
-
-let lib_crate_display_name = if variable::is_set("lib_crate_display_name") && variable::get("lib_crate_display_name") != "" {
-    variable::get("lib_crate_display_name")
-} else {
-    variable::set("lib_crate_display_name", lib_name);
-    lib_name
-};
-
-// --- BINARY FALLBACKS ---
-let bin_name = if variable::is_set("bin_name") && variable::get("bin_name") != "" {
-    variable::get("bin_name")
-} else {
-    let separator = if lib_name.contains("-") {
-        "-cli"
-    } else if lib_name.to_kebab_case() == lib_name {
-        "-cli"
-    } else {
-        "_cli"
-    };
-
-    let fallback_bin_name = if lib_name == "" { project_name } else { lib_name + separator };
-    variable::set("bin_name", fallback_bin_name);
-
-    // bin_crate_name fallback
-    if !variable::is_set("bin_crate_name") || variable::get("bin_crate_name") == "" {
-        variable::set("bin_crate_name", fallback_bin_name);
-    }
-
-    fallback_bin_name
-};
-
-if !variable::is_set("bin_crate_display_name") || variable::get("bin_crate_display_name") == "" {
-    variable::set("bin_crate_display_name", bin_name);
+// 📦 Binary (CLI) name
+if !variable::is_set("cli_name") {
+    let cli_default = project_name + "-cli";
+    let cli_name = variable::prompt("Binary crate name (for CLI)", cli_default);
+    variable::set("cli_name", cli_name);
+    variable::set("binary_name", cli_name);
 }
 
-// --- EXECUTABLE FALLBACK ---
-if !variable::is_set("exe_name") || variable::get("exe_name") == "" {
-    variable::set("exe_name", lib_name);
+// 📚 Library name
+if !variable::is_set("library_name") {
+    let library_default = project_name;
+    let library_name = variable::prompt("Library crate name", library_default);
+    variable::set("library_name", library_name);
 }
 
-// --- LICENSE FALLBACKS ---
-let year = if variable::is_set("license_year") && variable::get("license_year") != "" {
-    variable::get("license_year")
-} else {
-    let today = system::date();
-    let y = today.year.to_string();
-    variable::set("license_year", y);
-    y
-};
+// 🔧 Executable command (invoked from CLI)
+if !variable::is_set("command") {
+    let command = variable::prompt("CLI command name", project_name);
+    variable::set("command", command);
+}
 
-let holder = if variable::is_set("license_holder") && variable::get("license_holder") != "" {
-    variable::get("license_holder")
-} else {
-    let a = variable::get("authors");
-    variable::set("license_holder", a);
-    a
-};
+// 🖹 Display name for the CLI app (UI, docs)
+if !variable::is_set("display_name") {
+    let display_name = variable::prompt("Display name of your app", project_name);
+    variable::set("display_name", display_name);
+}
 
-// --- PROJECT OBJECT ---
-variable::set("crate_command_name", variable::get("exe_name"));
-variable::set("crate_name", project_name);
-variable::set("crate_display_name", lib_name);
-variable::set("crate_binary_name", bin_name);
-variable::set("crate_license_year", year);
-variable::set("crate_license_holder", holder);
-variable::set("crate_description", variable::get("description"));
+// 📅 License year (e.g. 2025)
+if !variable::is_set("license_year") {
+    let year = system::date().year.to_string();
+    let license_year = variable::prompt("License year", year);
+    variable::set("license_year", license_year);
+}
+
+// 👤 License holder (extracted from authors)
+if !variable::is_set("license_holder") {
+    let username = variable::get("username");
+    let license_holder = variable::prompt("License holder", username);
+    variable::set("license_holder", license_holder);
+}

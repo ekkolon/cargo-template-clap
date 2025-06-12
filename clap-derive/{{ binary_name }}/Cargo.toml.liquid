@@ -1,5 +1,5 @@
 [package]
-name = "{{ crate_binary_name }}"
+name = "{{ binary_name }}"
 build = "build.rs"
 
 rust-version.workspace = true
@@ -12,7 +12,7 @@ categories.workspace = true
 
 
 [[bin]]
-name = "{{ crate_command_name | snake_case }}"
+name = "{{ command | snake_case }}"
 path = "./src/main.rs"
 
 
@@ -21,7 +21,7 @@ clap = { workspace = true, features = ["derive", "wrap_help", "string", "env"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
 
-{{ crate_command_name | snake_case }} = { path = "../{{ crate_name  }}" }
+{{ library_name }} = { path = "../{{ library_name  }}" }
 
 
 [dev-dependencies]
@@ -29,7 +29,7 @@ assert_cmd = "2"
 predicates = "3"
 
 [build-dependencies]
-{{ crate_command_name | snake_case }} = { path = "../{{ crate_name  }}" }
+{{ library_name }} = { path = "../{{ library_name  }}" }
 clap = { workspace = true }
 clap_mangen = { version = "0.2.27" }
 clap_complete = { version = "4.5" }
