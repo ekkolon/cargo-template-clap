@@ -28,13 +28,13 @@ cargo install cargo-generate
 ### Generate Clap CLI project
 
 ```bash
-cargo generate --git ekkolon/cargo-template-clap --path clap-derive
+cargo generate ekkolon/cargo-template-clap clap-derive
 ```
 
 ### Generate Clap CLI project with name
 
 ```bash
-cargo generate --git ekkolon/cargo-template-clap --path clap-derive --name ripgrep
+cargo generate --name ripgrep ekkolon/cargo-template-clap clap-derive
 ```
 
 ## 📄 License
