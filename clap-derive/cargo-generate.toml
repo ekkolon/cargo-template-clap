@@ -7,4 +7,4 @@ exclude = []
 
 [hooks]
 pre = ["hooks/set-variables.rhai"]
-post = ["hooks/build.rhai", "hooks/cleanup.rhai"]
+post = ["hooks/cleanup.rhai"]
